@@ -10,7 +10,11 @@ RUN pip install -r requirements.txt
 
 COPY cron_job.py ./cron_job.py
 COPY input.yaml ./input.yaml
+COPY entrypoint.sh ./entrypoint.sh
+
+RUN chmod +x ./entrypoint.sh
+
 
 #run the chron_job
-Entrypoint [ "python", "./cron_job.py" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
 
